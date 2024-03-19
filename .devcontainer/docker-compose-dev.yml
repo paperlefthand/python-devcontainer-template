@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  devcontainer:
+    image: "paperlefthand/python-devcontainer-image:latest"
+    command: sleep infinity
+    volumes:
+      - ../:/sample-project:cached
+    env_file:
+      - .env

@@ -2,50 +2,37 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/python
 {
 	"name": "sample-project",
-	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "paperlefthand/python-devcontainer-image:1.0",
-	"features": {
-		"ghcr.io/devcontainers-contrib/features/terraform-asdf:2": {}
-	},
+	"dockerComposeFile": "docker-compose-dev.yml",
+	"service": "devcontainer",
+	"workspaceFolder": "/sample-project",
 	// Features to add to the dev container. More info: https://containers.dev/features.
-	// "features": {},
+	"features": {
+		// "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+	},
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
-	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "pip3 install --user -r requirements.txt",
+	"postCreateCommand": "/bin/sh .devcontainer/postCreateCommand.sh",
+	"mounts": [
+		"source=${localEnv:HOME}${localEnv:USERPROFILE}/.aws,target=/home/vscode/.aws,type=bind,consistency=cached",
+		"source=${localEnv:HOME}${localEnv:USERPROFILE}/.git,target=/home/vscode/.git,type=bind,consistency=cached"
+	],
 	// Configure tool-specific properties.
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"ms-python.black-formatter",
+				"ms-python.python",
 				"ms-toolsai.jupyter",
 				"amazonwebservices.aws-toolkit-vscode",
 				"mhutchie.git-graph",
 				"gruntfuggly.todo-tree",
 				"charliermarsh.ruff",
 				"yzhang.markdown-all-in-one",
-				"njpwerner.autodocstring"
+				"njpwerner.autodocstring",
+				"hediet.vscode-drawio"
 			],
-			"settings": {
-				"[python]": {
-					"editor.defaultFormatter": "ms-python.black-formatter",
-					"editor.formatOnSave": true,
-					"editor.codeActionsOnSave": {
-						"source.fixAll": true,
-						"source.organizeImports": true
-					}
-				},
-				"python.analysis.typeCheckingMode": "basic",
-				"python.testing.pytestArgs": [
-					"tests"
-				],
-				"python.testing.unittestEnabled": false,
-				"python.testing.pytestEnabled": true,
-				"extensions.ignoreRecommendations": true,
-				"autoDocstring.docstringFormat": "google"
-			}
+			"settings": {}
 		}
 	},
 	// More info: https://aka.ms/dev-containers-non-root.
-	"remoteUser": "vscode"
+	// "remoteUser": "vscode"
 }
