@@ -14,6 +14,7 @@
 	"postCreateCommand": "/bin/sh .devcontainer/postCreateCommand.sh",
 	"mounts": [
 		"source=${localEnv:HOME}${localEnv:USERPROFILE}/.aws,target=/home/vscode/.aws,type=bind,consistency=cached",
+		"source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached",
 		"source=${localEnv:HOME}${localEnv:USERPROFILE}/.git,target=/home/vscode/.git,type=bind,consistency=cached"
 	],
 	// Configure tool-specific properties.
