@@ -29,7 +29,9 @@
 				"charliermarsh.ruff",
 				"yzhang.markdown-all-in-one",
 				"njpwerner.autodocstring",
-				"hediet.vscode-drawio"
+                                "hashicorp.terraform",
+                                "hashicorp.hcl",
+	                        "hediet.vscode-drawio"
 			],
 			"settings": {}
 		}
